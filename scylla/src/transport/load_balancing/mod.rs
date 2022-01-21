@@ -1,6 +1,6 @@
-//! Load balancing configurations  
-//! `Session` can use any load balancing policy which implements the `LoadBalancingPolicy` trait  
-//! Policies which implement the `ChildLoadBalancingPolicy` can be wrapped in some other policies  
+//! Load balancing configurations
+//! `Session` can use any load balancing policy which implements the `LoadBalancingPolicy` trait
+//! Policies which implement the `ChildLoadBalancingPolicy` can be wrapped in some other policies
 //! See [the book](https://cvybhu.github.io/scyllabook/load-balancing/load-balancing.html) for more information
 
 use super::{cluster::ClusterData, node::Node};
@@ -11,10 +11,12 @@ use std::sync::Arc;
 mod dc_aware_round_robin;
 mod round_robin;
 mod token_aware;
+mod preferred_host;
 
 pub use dc_aware_round_robin::DcAwareRoundRobinPolicy;
 pub use round_robin::RoundRobinPolicy;
 pub use token_aware::TokenAwarePolicy;
+pub use preferred_host::PreferredHostPolicy;
 
 /// Represents info about statement that can be used by load balancing policies.
 pub struct Statement<'a> {
